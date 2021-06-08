@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基于 vuepress 的 Vue 组件库开发环境搭建 | 骆驼的技术博客</title><meta name="keywords" content="Vue,vuepress,template-vue-kit"><meta name="author" content="骆驼,luotuo@bszhct.com"><meta name="copyright" content="骆驼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vuepress 是什么？引用官方的一句话：Vue 驱动的静态网站生成器。适合用来做文档类型的网站搭建，基于它我搭建了一个 Vue 组件库的开发环境。 特性vuepress 自身提供的能力是强大的，这也意味着有比较多的 API 和各种繁琐配置项，如果你正在找 Vue 组件库的脚手架，可以作为一个参考，本脚手架具有以下几个特点： 1、开箱即用，不用过多的关注配置，专注于自身的组件开发 2、 文档格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 vuepress 的 Vue 组件库开发环境搭建">
+<meta property="og:url" content="http://blog.bszhct.com/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="骆驼的技术博客">
+<meta property="og:description" content="vuepress 是什么？引用官方的一句话：Vue 驱动的静态网站生成器。适合用来做文档类型的网站搭建，基于它我搭建了一个 Vue 组件库的开发环境。 特性vuepress 自身提供的能力是强大的，这也意味着有比较多的 API 和各种繁琐配置项，如果你正在找 Vue 组件库的脚手架，可以作为一个参考，本脚手架具有以下几个特点： 1、开箱即用，不用过多的关注配置，专注于自身的组件开发 2、 文档格式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.bszhct.com/images/default-cover5.png">
+<meta property="article:published_time" content="2020-02-05T12:45:12.000Z">
+<meta property="article:modified_time" content="2021-04-13T12:15:03.061Z">
+<meta property="article:author" content="骆驼">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="vuepress">
+<meta property="article:tag" content="template-vue-kit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.bszhct.com/images/default-cover5.png"><link rel="shortcut icon" href="/images/avatar.png"><link rel="canonical" href="http://blog.bszhct.com/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 骆驼","link":"链接: ","source":"来源: 骆驼的技术博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-13 20:15:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/default-cover5.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">骆驼的技术博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于 vuepress 的 Vue 组件库开发环境搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-05T12:45:12.000Z" title="发表于 2020-02-05 20:45:12">2020-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-13T12:15:03.061Z" title="更新于 2021-04-13 20:15:03">2021-04-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Vue/">Vue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于 vuepress 的 Vue 组件库开发环境搭建"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>vuepress 是什么？引用官方的一句话：Vue 驱动的静态网站生成器。适合用来做文档类型的网站搭建，基于它我搭建了一个 Vue 组件库的开发环境。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>vuepress 自身提供的能力是强大的，这也意味着有比较多的 API 和各种<a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/config/#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">繁琐配置项</a>，如果你正在找 Vue 组件库的脚手架，可以作为一个参考，本脚手架具有以下几个特点：</p>
+<p>1、开箱即用，不用过多的关注配置，专注于自身的组件开发</p>
+<p>2、 文档格式参照 <a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/">vuepress 官网</a>，不是很好看，也不算太丑。。。</p>
+<p>3、组件使用 @vue/cli 一键打包，方便快捷</p>
+<p>效果如下：</p>
+<p><img src="/images/vue-uikit.gif" alt="实现效果"></p>
+<p>完整效果查看，请移步<a target="_blank" rel="noopener" href="https://github.com/bszhct/template-vue-kit">这里</a>，或者通过全局安装 <a target="_blank" rel="noopener" href="https://github.com/bszhct/bs-cli">bs-cli</a>，然后执行 <code>bs init</code>，选择「组件库(Vue)」这个选项创建模板来查看。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>新增组件只需要三步：</p>
+<p>1、在 <strong>src</strong> 里面新增组件</p>
+<p>2、在 <strong>docs/.vuepress/components/demo</strong> 新增使用姿势</p>
+<p>3、在 <strong>docs/components</strong> 里面新增使用文档</p>
+<p>至于细节，vuepress 官方文档描述得非常详细，这里就不废话了，<a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/">传送门</a>。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:luotuo@bszhct.com">骆驼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.bszhct.com/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">http://blog.bszhct.com/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.bszhct.com" target="_blank">骆驼的技术博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/vuepress/">vuepress</a><a class="post-meta__tags" href="/tags/template-vue-kit/">template-vue-kit</a></div><div class="post_share"><div class="social-share" data-image="/images/default-cover5.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/qr-wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/qr-wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/qr-ali.png" target="_blank"><img class="post-qr-code-img" src="/images/qr-ali.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/05/05/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AA-vscode-%E6%8F%92%E4%BB%B6/"><img class="prev-cover" src="/images/vscode.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">如何写一个 VSCode 插件</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/21/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA-Vue-%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"><img class="next-cover" src="/images/default-cover4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">如何快速搭建 Vue 组件开发环境</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/01/21/如何快速搭建-Vue-组件开发环境/" title="如何快速搭建 Vue 组件开发环境"><img class="cover" src="/images/default-cover4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-21</div><div class="title">如何快速搭建 Vue 组件开发环境</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">骆驼</div><div class="author-info__description">全栈开发者、国漫脑残粉、间歇性踌躇满志的废柴。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/bszhct"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">文档库即将上线。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/%E6%96%B0%E6%89%8B%E5%BC%95%E5%AF%BC%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8D%97/" title="新手引导组件踩坑指南"><img src="/images/default-cover2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新手引导组件踩坑指南"/></a><div class="content"><a class="title" href="/2021/06/07/%E6%96%B0%E6%89%8B%E5%BC%95%E5%AF%BC%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8D%97/" title="新手引导组件踩坑指南">新手引导组件踩坑指南</a><time datetime="2021-06-07T12:11:44.000Z" title="发表于 2021-06-07 20:11:44">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E7%9A%84-5-%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="前端请求下载文件的 5 种方式"><img src="/images/default-cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端请求下载文件的 5 种方式"/></a><div class="content"><a class="title" href="/2021/05/20/%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E7%9A%84-5-%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="前端请求下载文件的 5 种方式">前端请求下载文件的 5 种方式</a><time datetime="2021-05-20T11:03:35.000Z" title="发表于 2021-05-20 19:03:35">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/05/05/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AA-vscode-%E6%8F%92%E4%BB%B6/" title="如何写一个 VSCode 插件"><img src="/images/vscode.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何写一个 VSCode 插件"/></a><div class="content"><a class="title" href="/2020/05/05/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AA-vscode-%E6%8F%92%E4%BB%B6/" title="如何写一个 VSCode 插件">如何写一个 VSCode 插件</a><time datetime="2020-05-05T14:17:02.000Z" title="发表于 2020-05-05 22:17:02">2020-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="基于 vuepress 的 Vue 组件库开发环境搭建"><img src="/images/default-cover5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 vuepress 的 Vue 组件库开发环境搭建"/></a><div class="content"><a class="title" href="/2020/02/05/%E5%9F%BA%E4%BA%8E-vuepress-%E7%9A%84-Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="基于 vuepress 的 Vue 组件库开发环境搭建">基于 vuepress 的 Vue 组件库开发环境搭建</a><time datetime="2020-02-05T12:45:12.000Z" title="发表于 2020-02-05 20:45:12">2020-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/01/21/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA-Vue-%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="如何快速搭建 Vue 组件开发环境"><img src="/images/default-cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何快速搭建 Vue 组件开发环境"/></a><div class="content"><a class="title" href="/2020/01/21/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA-Vue-%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="如何快速搭建 Vue 组件开发环境">如何快速搭建 Vue 组件开发环境</a><time datetime="2020-01-21T15:51:17.000Z" title="发表于 2020-01-21 23:51:17">2020-01-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By 骆驼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" href="https://beian.miit.gov.cn">浙ICP备2021009781号</a><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hXQMqHSnFGLtWUfLlj1InlSn-gzGzoHsz',
+      appKey: '7h6widxvcbSBvWUbfb9k9INc',
+      placeholder: '齐天大圣到此一游',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
